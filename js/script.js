@@ -1,7 +1,15 @@
 // JavaScript para funcionalidades do site
 document.addEventListener('DOMContentLoaded', function() {
-    // Menu mobile responsivo
+    // Menu mobile responsivo - garantir que inicie fechado
     const navMenu = document.querySelector('.nav-menu');
+    const menuToggle = document.querySelector('.menu-toggle');
+    if (navMenu) {
+        navMenu.classList.remove('active');
+    }
+    if (menuToggle) {
+        menuToggle.classList.remove('active');
+    }
+    
     const navLinks = document.querySelectorAll('.nav-link');
     
     // Adicionar classe ativa ao link da página atual
@@ -14,62 +22,48 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Smooth scroll para links internos
+    // Scroll simples para links internos (sem animação)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 target.scrollIntoView({
-                    behavior: 'smooth',
+                    behavior: 'auto',
                     block: 'start'
                 });
             }
         });
     });
     
-    // Animação de entrada para cards
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
+    // Efeito hover simples nos botões (apenas para desktop)
+    if (window.innerWidth > 768) {
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
         });
-    }, observerOptions);
+    }
     
-    // Observar cards de acomodações
-    document.querySelectorAll('.accommodation-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
-    
-    // Efeito parallax suave no hero
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
-    });
-    
-    // Adicionar efeito hover melhorado nos botões
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-2px) scale(1.05)';
+    // Fechar menu ao clicar em um link (mobile)
+    if (window.innerWidth <= 768) {
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                closeMobileMenu();
+            });
         });
         
-        btn.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
+        // Fechar menu ao clicar em links do dropdown
+        document.querySelectorAll('.dropdown-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                closeMobileMenu();
+            });
         });
-    });
+    }
     
     // Menu dropdown para mobile
     const dropdown = document.querySelector('.dropdown');
@@ -239,11 +233,19 @@ Aguardo retorno!`;
 // Função para mostrar/ocultar menu mobile
 function toggleMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
+    const menuToggle = document.querySelector('.menu-toggle');
     navMenu.classList.toggle('active');
+    if (menuToggle) {
+        menuToggle.classList.toggle('active');
+    }
 }
 
 // Função para fechar menu mobile ao clicar em um link
 function closeMobileMenu() {
     const navMenu = document.querySelector('.nav-menu');
+    const menuToggle = document.querySelector('.menu-toggle');
     navMenu.classList.remove('active');
+    if (menuToggle) {
+        menuToggle.classList.remove('active');
+    }
 }

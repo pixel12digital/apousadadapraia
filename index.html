@@ -7,10 +7,88 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        @keyframes shine-reservar {
+            0%   { left: -120%; }
+            60%  { left: 120%;  }
+            100% { left: 120%;  }
+        }
+        #btn-reservar-principal {
+            overflow: hidden;
+        }
+        #btn-reservar-principal::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shine-reservar 2.5s infinite;
+            pointer-events: none;
+        }
         #btn-reservar-principal:hover {
-            background: linear-gradient(135deg, #023A8D 0%, #2a5aae 50%, #5aa0e9 100%) !important;
-            box-shadow: 0 6px 25px rgba(2, 58, 141, 0.5) !important;
-            transform: translateY(-2px) !important;
+            background: linear-gradient(135deg, #023A8D 0%, #1565C0 50%, #42A5F5 100%) !important;
+            box-shadow: 0 8px 30px rgba(2, 58, 141, 0.65) !important;
+            transform: translateY(-3px) !important;
+        }
+
+        /* Botao Flutuante Reservar */
+        .reservar-float {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            z-index: 9998;
+        }
+        .reservar-float-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #023A8D 0%, #1e4a9e 50%, #4a90d9 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 18px rgba(2, 58, 141, 0.55);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            white-space: nowrap;
+        }
+        .reservar-float-btn:hover {
+            background: linear-gradient(135deg, #023A8D 0%, #1565C0 50%, #42A5F5 100%);
+            box-shadow: 0 6px 25px rgba(2, 58, 141, 0.7);
+            transform: translateY(-2px);
+        }
+        @keyframes shine-float {
+            0%   { left: -120%; }
+            60%  { left: 120%;  }
+            100% { left: 120%;  }
+        }
+        .reservar-float-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+            animation: shine-float 2.5s infinite;
+            pointer-events: none;
+        }
+        .reservar-float-icon {
+            width: 18px;
+            height: 18px;
+            fill: white;
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .reservar-float { bottom: 85px; right: 15px; }
+        }
+        @media (max-width: 480px) {
+            .reservar-float { bottom: 80px; right: 10px; }
         }
     </style>
 </head>
@@ -142,7 +220,7 @@
                         </div>
                     </div>
                     <p class="location-note">Localizada a apenas 13 km do Aeroporto Marechal Cunha Machado e do centro histórico de São Luís, oferecemos informações sobre estacionamento gratuito na recepção 24 horas.</p>
-                    <a href="https://www.reseliva.com/booknow/pousadadapraia/?source=website" class="btn btn-primary" target="_blank" id="btn-reservar-principal" style="background: linear-gradient(135deg, #023A8D 0%, #1e4a9e 50%, #4a90d9 100%) !important; color: white !important; box-shadow: 0 4px 15px rgba(2, 58, 141, 0.4) !important; transition: all 0.3s ease !important;">Reservar</a>
+                    <a href="https://www.reseliva.com/booknow/pousadadapraia/?source=website" class="btn btn-primary" target="_blank" id="btn-reservar-principal" style="background: linear-gradient(135deg, #023A8D 0%, #1e4a9e 50%, #4a90d9 100%) !important; color: white !important; box-shadow: 0 4px 18px rgba(2, 58, 141, 0.5) !important; transition: all 0.3s ease !important; padding: 1rem 3.5rem !important; font-size: 1.1rem !important; letter-spacing: 0.5px !important;">Reservar</a>
                 </div>
             </div>
         </section>

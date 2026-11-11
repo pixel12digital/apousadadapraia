@@ -2319,3 +2319,88 @@ body {
     }
     
 }
+/* Cantinho do Café (café de apoio ao hóspede) */
+.cafe-section {
+    padding: 4rem 0;
+    background: #ffffff;
+    position: relative;
+    z-index: 8;
+}
+
+.cafe-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.cafe-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.cafe-tag {
+    display: inline-block;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    color: #F7931E;
+    margin-bottom: 0.25rem;
+}
+
+.cafe-text h2 {
+    font-size: 2.5rem;
+    color: #023A8D;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+}
+
+.cafe-text p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.cafe-itens {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.cafe-itens li {
+    border: 1px solid #023A8D;
+    color: #023A8D;
+    border-radius: 999px;
+    padding: 0.35rem 1rem;
+    font-size: 0.95rem;
+}
+
+.cafe-aviso {
+    background: #fff4e0;
+    border-left: 4px solid #F7931E;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .cafe-section {
+        padding: 3rem 0;
+    }
+
+    .cafe-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .cafe-text h2 {
+        font-size: 2rem;
+    }
+}
